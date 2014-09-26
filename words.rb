@@ -1,12 +1,16 @@
 require_relative 'dictionary.rb'
 
-def checkOneMore(possible, actual) #possible is greater than actual
+def checkOneMore(possible, input) #possible is greater than input
 	isCorr = true
-
-	for i in 0..actual.length-1
-		if actual[i] != possible[i]
-			isCorr = false
-			break
+	mod = 0
+	for i in 0..input.length-1
+		if input[i] != possible[i+mod]
+			if input[i] == possible[i+1]
+				mod = 1
+			else
+				isCorr = false
+				break
+			end
 		end
 	end
 
@@ -17,11 +21,11 @@ def checkOneMore(possible, actual) #possible is greater than actual
 	return
 end
 
-def checkOneLess(possible, actual) #possible is less than actual
+def checkOneLess(possible, input) #possible is less than input
 	isCorr = true
 
 	for i in 0..possible.length-1
-		if actual[i] != possible[i]
+		if input[i] != possible[i]
 			isCorr = false
 			break
 		end
@@ -34,16 +38,16 @@ def checkOneLess(possible, actual) #possible is less than actual
 	return
 end
 
-def checkSameLen(possible, actual) #possible is same length as actual
+def checkSameLen(possible, input) #possible is same length as input
 	numWrong = 0
 
-	for i in 0..actual.length-1
-		if actual[i] != possible [i]
+	for i in 0..input.length-1
+		if input[i] != possible [i]
 			numWrong = numWrong + 1
 		end
 	end
 
-	if(numWrong <= actual.length/2)
+	if(numWrong <= 3)
 		puts possible
 	end
 	return
