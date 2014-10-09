@@ -1,17 +1,23 @@
 require_relative 'dictionary.rb'
 
 def getScore(poss, act)
-	mod = 0
+	aMod = 0
+	pMod = 0
 	numWrong = 0
+	count = 0
+
+	if poss.chars.sort == act.chars.sort
+		return 100
+	end
 
 	for i in 0..act.length-1
-		if act[i+mod] == poss[i+mod]
-			mod = mod
-		elsif act[i+mod] == poss[i+mod+1]
-			mod = mod + 1
+		if act[i+aMod] == poss[i+pMod]
+			# change nothing
+		elsif act[i+aMod] == poss[i+pMod+1]
+			pMod = pMod + 1
 			numWrong = numWrong + 1
-		elsif act[i+mod+1] == poss[i+mod]
-			mod = mod - 1
+		elsif act[i+aMod+1] == poss[i+pMod]
+			aMod = aMod + 1
 			numWrong = numWrong + 1
 		else
 			numWrong = numWrong + 1
