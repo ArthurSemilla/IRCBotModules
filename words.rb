@@ -1,6 +1,5 @@
 require_relative 'dictionary.rb'
 
-<<<<<<< HEAD
 def getScore(poss, act)
 	mod = 0
 	numWrong = 0
@@ -15,63 +14,10 @@ def getScore(poss, act)
 			mod = mod - 1
 			numWrong = numWrong + 1
 		else
-=======
-def checkOneMore(possible, input) #possible is greater than input
-	isCorr = true
-	mod = 0
-	for i in 0..input.length-1
-		if input[i] != possible[i+mod]
-			if input[i] == possible[i+1]
-				mod = 1
-			else
-				isCorr = false
-				break
-			end
-		end
-	end
-
-	if isCorr
-		puts possible
-	end
-
-	return
-end
-
-def checkOneLess(possible, input) #possible is less than input
-	isCorr = true
-
-	for i in 0..possible.length-1
-		if input[i] != possible[i]
-			isCorr = false
-			break
-		end
-	end
-
-	if isCorr
-		puts possible
-	end
-
-	return
-end
-
-def checkSameLen(possible, input) #possible is same length as input
-	numWrong = 0
-
-	for i in 0..input.length-1
-		if input[i] != possible [i]
->>>>>>> origin/master
 			numWrong = numWrong + 1
 		end
 	end
-
-<<<<<<< HEAD
 	return act.length - (poss.length - act.length).abs - numWrong*2
-=======
-	if(numWrong <= 3)
-		puts possible
-	end
-	return
->>>>>>> origin/master
 end
 
 def findCorrections(val)
