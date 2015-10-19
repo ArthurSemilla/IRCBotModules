@@ -17,6 +17,31 @@ mods = [
 "Cranberry"
 ]
 
+module.exports.init = function(b)
+{
+  bot = b;
+  bot.readDataFile("options.json", function(err, data)
+  {
+    if(err) 
+    {
+      console.log("Error opening options file.");
+      options = {};
+    }
+    else
+    {
+      try
+      {
+        options = JSON.parse(data);
+      }
+      catch(ex)
+      {
+        console.log("Corrupted options.json file. Defaulting to blank...");
+        options = {};
+      }
+    }
+  });
+};
+
 rand = function(arr)
 {
   return arr[Math.floor(Math.random() * arr.length)];
